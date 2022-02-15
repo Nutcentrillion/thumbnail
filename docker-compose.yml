@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  server:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    container_name: back_thumbnail
+    image: back_thumbnail
+    ports:
+      - "5000:5000"
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules
