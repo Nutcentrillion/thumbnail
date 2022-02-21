@@ -1,13 +1,28 @@
 version: "3.9"
 services:
-  server:
+  # back:
+  #   build:
+  #     context: ./back
+  #     dockerfile: Dockerfile
+  #   container_name: back_thumbnail
+  #   image: back_thumbnail
+  #   ports:
+  #     - "5000:5000"
+  #   volumes:
+  #     - ./back:/app
+  #     - /app/node_modules
+  front:
     build:
-      context: ./back
+      context: ./front
       dockerfile: Dockerfile
-    container_name: back_thumbnail
-    image: back_thumbnail
+    container_name: front_thumbnail
+    image: front_thumbnail
     ports:
-      - "5000:5000"
-    # volumes:
-    #   - .:/app
-    #   - /app/node_modules
+      - "3000:3000"
+    volumes:
+      - ./front:/app
+  preview-service:
+    image: fpurchess/preview-service
+    container_name: preview_service_thumbnail
+    ports:
+      - "8000:8000"
